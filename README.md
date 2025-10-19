@@ -2,8 +2,7 @@
 Bienvenido 
 
 
-# 📘 Proyecto: Implementación de Red LAN en la Unidad Educativa “Buena Fe”
-
+# 📘 Proyecto:  CONEXIÓN DE UNA RED LAN PARA FACILITAR LA INFORMACIÓN Y LOS RECURSOS DIGITALES PARA LA U.E BUENA FE
 ## 📖 Descripción del Proyecto
 
 Este proyecto tiene como finalidad **diseñar e implementar una red LAN (Local Area Network)** en la **Unidad Educativa “Buena Fe”**, para mejorar la conectividad y el acceso a internet dentro de la institución.  
