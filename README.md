@@ -1,10 +1,6 @@
 # Control-de-asistencias-
 Bienvenido 
 
-Perfecto 👍
-Aquí tienes el README.md actualizado con el nombre correcto de la institución:
-Unidad Educativa “Buena Fe” (sin base de datos ni impresoras).
-
 
 ---
 
