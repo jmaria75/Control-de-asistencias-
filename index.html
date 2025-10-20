@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Asistencia - U.E. Buena Fe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fondo animado con partículas -->
+    <div class="particles-container">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header Super Llamativo -->
+        <header class="header">
+            <div class="header-background"></div>
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-animated">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                    </div>
+                    <div class="header-text">
+                        <h1 class="glowing-text">Unidad Educativa Buena Fe</h1>
+                        <p class="subtitle-animated">Sistema de Control de Asistencia Digital</p>
+                    </div>
+                </div>
+                <div class="date-display">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    <span id="currentDate"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Estadísticas Destacadas -->
+        <section class="stats-hero">
+            <div class="stats-grid">
+                <div class="stat-card stat-present">
+                    <div class="stat-background"></div>
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Presentes</h3>
+                        <p class="stat-number" id="presentCount">0</p>
+                        <div class="stat-bar">
+                            <div class="stat-fill stat-fill-present" id="presentBar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card stat-absent">
+                    <div class="stat-background"></div>
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Ausentes</h3>
+                        <p class="stat-number" id="absentCount">0</p>
+                        <div class="stat-bar">
+                            <div class="stat-fill stat-fill-absent" id="absentBar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card stat-late">
+                    <div class="stat-background"></div>
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Tardanzas</h3>
+                        <p class="stat-number" id="lateCount">0</p>
+                        <div class="stat-bar">
+                            <div class="stat-fill stat-fill-late" id="lateBar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card stat-justified">
+                    <div class="stat-background"></div>
+                    <div class="stat-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Justificados</h3>
+                        <p class="stat-number" id="justifiedCount">0</p>
+                        <div class="stat-bar">
+                            <div class="stat-fill stat-fill-justified" id="justifiedBar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contenido Principal -->
+        <div class="main-layout">
+            <!-- Formulario Moderno -->
+            <section class="form-section">
+                <div class="section-header">
+                    <h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="8.5" cy="7" r="4"></circle>
+                            <line x1="20" y1="8" x2="20" y2="14"></line>
+                            <line x1="23" y1="11" x2="17" y2="11"></line>
+                        </svg>
+                        Registrar Estudiante
+                    </h2>
+                </div>
+
+                <form id="studentForm" class="modern-form">
+                    <div class="form-group">
+                        <label for="studentName">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            Nombre Completo
+                        </label>
+                        <input 
+                            type="text" 
+                            id="studentName" 
+                            placeholder="Ingrese el nombre del estudiante"
+                            required
+                            autocomplete="off"
+                        >
+                        <span class="input-border"></span>
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="studentGrade">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                </svg>
+                                Grado / Curso
+                            </label>
+                            <select id="studentGrade" required>
+                                <option value="">Seleccione un grado</option>
+                                <option value="1ro Primaria">1ro Primaria</option>
+                                <option value="2do Primaria">2do Primaria</option>
+                                <option value="3ro Primaria">3ro Primaria</option>
+                                <option value="4to Primaria">4to Primaria</option>
+                                <option value="5to Primaria">5to Primaria</option>
+                                <option value="6to Primaria">6to Primaria</option>
+                                <option value="1ro Secundaria">1ro Secundaria</option>
+                                <option value="2do Secundaria">2do Secundaria</option>
+                                <option value="3ro Secundaria">3ro Secundaria</option>
+                                <option value="4to Secundaria">4to Secundaria</option>
+                                <option value="5to Secundaria">5to Secundaria</option>
+                                <option value="6to Secundaria">6to Secundaria</option>
+                            </select>
+                            <span class="input-border"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="attendanceStatus">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Estado de Asistencia
+                            </label>
+                            <select id="attendanceStatus" required>
+                                <option value="">Seleccione un estado</option>
+                                <option value="Presente">✓ Presente</option>
+                                <option value="Ausente">✗ Ausente</option>
+                                <option value="Tardanza">⏰ Tardanza</option>
+                                <option value="Justificado">📄 Justificado</option>
+                            </select>
+                            <span class="input-border"></span>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            <span>Agregar Asistencia</span>
+                            <div class="btn-glow"></div>
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="clearBtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="1 4 1 10 7 10"></polyline>
+                                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                            </svg>
+                            <span>Limpiar</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Lista de Asistencia -->
+            <section class="list-section">
+                <div class="section-header">
+                    <h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                        </svg>
+                        Registro de Asistencias
+                    </h2>
+                    <button class="btn btn-export" id="exportBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>Exportar CSV</span>
+                    </button>
+                </div>
+
+                <div class="search-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Buscar por nombre o grado..."
+                    >
+                </div>
+
+                <div class="attendance-list" id="attendanceList">
+                    <div class="empty-state">
+                        <div class="empty-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3>Sin Registros</h3>
+                        <p>No hay asistencias registradas todavía</p>
+                        <small>Comience agregando estudiantes con el formulario</small>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-title">&copy; 2025 Unidad Educativa Buena Fe</p>
+                <p class="footer-subtitle">Sistema de Control de Asistencia Digital</p>
+                <div class="footer-team">
+                    <div class="team-section">
+                        <span class="team-role">Product Owner:</span>
+                        <span class="team-name">Julieta Núñez</span>
+                    </div>
+                    <div class="team-divider">|</div>
+                    <div class="team-section">
+                        <span class="team-role">Scrum Master:</span>
+                        <span class="team-name">José María</span>
+                    </div>
+                    <div class="team-divider">|</div>
+                    <div class="team-section">
+                        <span class="team-role">Desarrolladores:</span>
+                        <span class="team-name">Midori & Lisbeth</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
